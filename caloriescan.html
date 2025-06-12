@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CalorieScan Early Access</title>
+  <style>
+    html, body { margin:0; padding:0; height:100%; }
+    body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
+    .container { max-width:400px; padding:1em; text-align:center; }
+    img.banner { width:100%; height:auto; margin-bottom:1em; border-radius:0.5em; }
+
+    .social-row {
+      display:flex;
+      justify-content:center;
+      gap:0.75em;
+      margin-bottom:1em;
+    }
+    .social-row img {
+      width:28px;
+      height:28px;
+      object-fit:contain;
+      opacity:0.85;
+      transition:opacity 0.3s, transform 0.3s;
+    }
+    .social-row img:hover {
+      opacity:1;
+      transform:scale(1.1);
+    }
+
+    h1 {
+      font-size:1.6rem;
+      margin-bottom:0.5em;
+      font-weight:600;
+    }
+    p {
+      margin-bottom:1.2em;
+      line-height:1.6;
+      font-size:1rem;
+    }
+    .btn {
+      display:inline-block;
+      padding:0.85em 1.75em;
+      font-size:1.05rem;
+      font-weight:600;
+      text-decoration:none;
+      border-radius:0.6em;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      background:#000;
+      color:#fff;
+      transition:transform 0.2s, background 0.2s;
+    }
+    .btn:hover {
+      background:#222;
+      transform:scale(1.03);
+    }
+    .btn:active {
+      transform:scale(0.97);
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <img src="jakecalbanner.png" alt="CalorieScan Banner" class="banner">
+  
+      <div class="social-row">
+          <a href="https://tiktok.com/@jakecalorie" target="_blank">
+            <img src="tiktokicon.webp" alt="TikTok">
+          </a>
+          <a href="https://instagram.com/jakecalorie" target="_blank">
+            <img src="instagramicon.png" alt="Instagram">
+          </a>
+        </div>
+  
+      <h1>Get Early Access to CalorieScan!</h1>
+      <p>I'm building CalorieScan – an iPhone app that <strong>instantly and accurately counts calories and macros</strong> using just your camera. No more manual calorie tracking or guessing nutrition!</p>
+      <p>Launch price will be $9.99. Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase). You'll get to try CalorieScan 2–3 weeks before public launch and help shape what features we build!</p>
+      <a href="YOUR_STRIPE_CHECKOUT_URL" class="btn">Reserve for $1</a>
+    </div>
+  </body>
+</html>
