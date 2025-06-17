@@ -9,19 +9,19 @@
   <style>
     html, body { margin:0; padding:0; height:100%; }
     body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
-    .container { max-width:400px; padding:1em; text-align:center; }
-    img.banner { width:100%; height:auto; margin-bottom:1em; border-radius:0.5em; }
+    .container { max-width:400px; padding:0.8em; text-align:center; }
+    img.banner { width:100%; height:auto; margin-bottom:0.8em; border-radius:0.5em; }
 
     .social-row {
       display:flex;
       justify-content:center;
       align-items:center;
       gap:0.75em;
-      margin-bottom:0.25em;
+      margin-bottom:0.2em;
     }
     .social-row img {
-      width:28px;
-      height:28px;
+      width:24px;
+      height:24px;
       object-fit:contain;
       opacity:0.85;
       transition:opacity 0.3s, transform 0.3s;
@@ -34,23 +34,47 @@
     .social-handle {
       font-size:0.85rem;
       color:#555;
-      margin-bottom:1em;
+      margin-bottom:0.8em;
     }
 
     h1 {
-      font-size:1.6rem;
-      margin-bottom:0.5em;
+      font-size:1.4rem;
+      margin-bottom:0.4em;
       font-weight:600;
     }
     p {
-      margin-bottom:1.2em;
-      line-height:1.6;
-      font-size:1rem;
+      margin-bottom:0.8em;
+      line-height:1.5;
+      font-size:0.9rem;
     }
+
+    /* Clean App Demo Section */
+    .app-demo {
+      margin: 1em 0;
+      padding: 1em 0.8em;
+    }
+    
+    .phone-mockup {
+      position: relative;
+      max-width: 160px;
+      margin: 0 auto;
+      background: #000;
+      border-radius: 1.8em;
+      padding: 0.3em;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    
+    .phone-screen {
+      width: 100%;
+      height: auto;
+      border-radius: 1.5em;
+      display: block;
+    }
+
     .btn {
       display:inline-block;
-      padding:0.85em 1.75em;
-      font-size:1.05rem;
+      padding:0.75em 1.5em;
+      font-size:1rem;
       font-weight:600;
       text-decoration:none;
       border-radius:0.6em;
@@ -58,6 +82,7 @@
       background:#000;
       color:#fff;
       transition:transform 0.2s, background 0.2s;
+      margin-top: 0.6em;
     }
     .btn:hover {
       background:#222;
@@ -65,6 +90,42 @@
     }
     .btn:active {
       transform:scale(0.97);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 480px) {
+      .container { 
+        max-width: 95%; 
+        padding: 0.6em; 
+      }
+      .phone-mockup { 
+        max-width: 140px; 
+      }
+      .app-demo {
+        margin: 0.8em 0;
+        padding: 0.8em 0.6em;
+      }
+      h1 { 
+        font-size: 1.3rem;
+        margin-bottom: 0.3em;
+      }
+      p { 
+        font-size: 0.85rem;
+        margin-bottom: 0.6em;
+      }
+      img.banner {
+        margin-bottom: 0.6em;
+      }
+    }
+
+    /* Ensure everything fits in viewport */
+    @media (max-height: 800px) {
+      .container { padding: 0.5em; }
+      h1 { font-size: 1.2rem; margin-bottom: 0.3em; }
+      p { font-size: 0.8rem; margin-bottom: 0.5em; }
+      .phone-mockup { max-width: 120px; }
+      .app-demo { margin: 0.6em 0; padding: 0.6em; }
+      img.banner { margin-bottom: 0.4em; }
     }
   </style>
 </head>
@@ -83,6 +144,14 @@
 
     <h1>Get Early Access to PocketScale!</h1>
     <p>I'm building PocketScale – an iPhone app that <strong>instantly and accurately weighs your food</strong> using just your camera. No more carrying kitchen scales or guessing portions!</p>
+
+    <!-- Clean App Demo Section -->
+    <div class="app-demo">
+      <div class="phone-mockup">
+        <img src="pocketscale-demo.png" alt="PocketScale App Demo" class="phone-screen">
+      </div>
+    </div>
+
     <p><strong>Launch price will be $9.99.</strong> Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase).</p>
     <p>You'll get to try PocketScale 2–3 weeks before public launch and help shape what features we build!</p>
     <a href="https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00" class="btn">Reserve for $1</a>
