@@ -10,7 +10,7 @@
     html, body { margin:0; padding:0; height:100%; }
     body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
     .container { max-width:400px; padding:0.8em; text-align:center; }
-    img.banner { width:100%; height:auto; margin-bottom:0.8em; border-radius:0.5em; }
+    img.banner { width:80%; height:auto; margin-bottom:0.8em; border-radius:0.5em; }
 
     .social-row {
       display:flex;
@@ -118,28 +118,14 @@
       }
     }
 
-    /* Optimized for mobile viewport heights */
-    @media (max-height: 900px) {
-      .container { padding: 0.4em; }
-      h1 { font-size: 1.2rem; margin-bottom: 0.2em; }
-      p { font-size: 0.85rem; margin-bottom: 0.4em; line-height: 1.4; }
-      .phone-mockup { max-width: 110px; }
-      .app-demo { margin: 0.5em 0; padding: 0.5em; }
-      img.banner { margin-bottom: 0.3em; }
-      .btn { padding: 0.65em 1.3em; margin-top: 0.4em; }
-    }
-
-    /* Extra optimization for very short screens */
-    @media (max-height: 750px) {
-      .container { padding: 0.3em; }
-      h1 { font-size: 1.1rem; margin-bottom: 0.15em; }
-      p { font-size: 0.8rem; margin-bottom: 0.3em; line-height: 1.3; }
-      .phone-mockup { max-width: 90px; }
-      .app-demo { margin: 0.3em 0; padding: 0.4em; }
-      img.banner { margin-bottom: 0.2em; }
-      .btn { padding: 0.6em 1.2em; margin-top: 0.3em; font-size: 0.9rem; }
-      .social-row { gap: 0.5em; margin-bottom: 0.1em; }
-      .social-row img { width: 20px; height: 20px; }
+    /* Ensure everything fits in viewport */
+    @media (max-height: 800px) {
+      .container { padding: 0.5em; }
+      h1 { font-size: 1.2rem; margin-bottom: 0.3em; }
+      p { font-size: 0.8rem; margin-bottom: 0.5em; }
+      .phone-mockup { max-width: 120px; }
+      .app-demo { margin: 0.6em 0; padding: 0.6em; }
+      img.banner { margin-bottom: 0.4em; }
     }
   </style>
 </head>
@@ -166,8 +152,7 @@
       </div>
     </div>
 
-    <p><strong>Launch price will be $9.99.</strong> Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase).</p>
-    <p>You'll get to try PocketScale 2–3 weeks before public launch and help shape what features we build!</p>
+    <p><strong>Launch price will be $9.99.</strong> Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase). You'll get to try PocketScale 2–3 weeks before public launch and help shape what features we build!</p>
     <a href="https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00" class="btn">Reserve for $1</a>
   </div>
 </body>
