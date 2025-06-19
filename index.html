@@ -16,10 +16,18 @@
     <!-- Redirecting text removed -->
   </div>
   <script>
+    // Capture source from URL parameter  
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get('source') || 'direct';
+    
+    // Store source in localStorage as backup
+    localStorage.setItem('traffic_source', source);
+    
+    // Random redirect WITH source parameter preserved
     if (Math.random() < 0.5) {
-      window.location.href = 'pocketscale.html';
+      window.location.href = `pocketscale.html?source=${source}`;
     } else {
-      window.location.href = 'caloriescan.html';
+      window.location.href = `caloriescan.html?source=${source}`;
     }
   </script>
 </body>

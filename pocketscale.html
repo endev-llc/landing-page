@@ -1,4 +1,3 @@
-<!-- pocketscale.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PocketScale Early Access</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Google tag (gtag.js) with source tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7BXWB9545"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L7BXWB9545');
+    
+    // Custom source tracking
+    const source = new URLSearchParams(window.location.search).get('source') || 
+                   localStorage.getItem('traffic_source') || 'direct';
+    const page = window.location.pathname.includes('pocketscale') ? 'pocketscale' : 'caloriescan';
+    
+    // Send custom event with source and page info
+    gtag('event', 'page_view_with_source', {
+      'source': source,
+      'page_type': page
+    });
+  </script>
+  
   <style>
     html, body { margin:0; padding:0; height:100%; }
     body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
@@ -155,5 +176,22 @@
     <p><strong>Launch price will be $9.99.</strong> Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase). You'll get to try PocketScale 2–3 weeks before public launch and help shape what features we build!</p>
     <a href="https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00" class="btn">Reserve for $1</a>
   </div>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const reserveBtn = document.querySelector('.btn');
+    reserveBtn.addEventListener('click', function() {
+      const source = new URLSearchParams(window.location.search).get('source') || 
+                     localStorage.getItem('traffic_source') || 'direct';
+      const page = window.location.pathname.includes('pocketscale') ? 'pocketscale' : 'caloriescan';
+      
+      gtag('event', 'reserve_click', {
+        'source': source,
+        'page_type': page,
+        'value': 1
+      });
+    });
+  });
+  </script>
 </body>
 </html>
