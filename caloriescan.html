@@ -179,12 +179,18 @@
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const source = new URLSearchParams(window.location.search).get('source') || 
+                     localStorage.getItem('traffic_source') || 'direct';
+      const page = 'caloriescan';
       const reserveBtn = document.querySelector('.btn');
+      
+      // Update Stripe URL with success redirect
+      const baseStripeUrl = 'https://buy.stripe.com/4gMeVd4xO1iSgrebRYgIo01';
+      const successUrl = `https://landing-page-896086041670.us-central1.run.app/successfulpayment.html?source=${source}&product=${page}`;
+      reserveBtn.href = `${baseStripeUrl}?success_url=${encodeURIComponent(successUrl)}`;
+      
+      // Track button click
       reserveBtn.addEventListener('click', function() {
-        const source = new URLSearchParams(window.location.search).get('source') || 
-                       localStorage.getItem('traffic_source') || 'direct';
-        const page = window.location.pathname.includes('pocketscale') ? 'pocketscale' : 'caloriescan';
-        
         gtag('event', 'reserve_click', {
           'source': source,
           'page_type': page,

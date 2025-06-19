@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Payment Successful - Early Access</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Google Analytics tracking for purchase completion -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7BXWB9545"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L7BXWB9545');
+    
+    // Track successful purchase with source
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get('source') || 'direct';
+    const product = urlParams.get('product') || 'unknown';
+    
+    gtag('event', 'purchase_completed', {
+      'source': source,
+      'product': product,
+      'value': 1
+    });
+  </script>
+  
   <style>
     html, body { margin:0; padding:0; height:100%; }
     body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
