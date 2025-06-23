@@ -28,125 +28,227 @@
   </script>
   
   <style>
-    html, body { margin:0; padding:0; height:100%; }
-    body { display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; background:#fff; color:#000; }
-    .container { max-width:400px; padding:0.8em; text-align:center; }
-    img.banner { width:80%; height:auto; margin-bottom:0.8em; border-radius:0.5em; }
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+    }
+    body { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-family: system-ui, sans-serif; 
+      color: #000;
+      padding: 2em 0;
+    }
+    .container { 
+      max-width: 420px; 
+      padding: 2em 1.2em; 
+      text-align: center; 
+    }
+    img.banner { 
+      width: 85%; 
+      height: auto; 
+      margin-bottom: 1.5em; 
+      border-radius: 0.8em; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
     .social-row {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:0.75em;
-      margin-bottom:0.2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
     }
     .social-row img {
-      width:24px;
-      height:24px;
-      object-fit:contain;
-      opacity:0.85;
-      transition:opacity 0.3s, transform 0.3s;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      opacity: 0.85;
+      transition: opacity 0.3s, transform 0.3s;
     }
     .social-row img:hover {
-      opacity:1;
-      transform:scale(1.1);
+      opacity: 1;
+      transform: scale(1.15);
     }
 
     .social-handle {
-      font-size:0.85rem;
-      color:#555;
-      margin-bottom:0.8em;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1.2em;
     }
 
     h1 {
-      font-size:1.4rem;
-      margin-bottom:0.4em;
-      font-weight:600;
+      font-size: 1.6rem;
+      margin-bottom: 1em;
+      font-weight: 600;
+      line-height: 1.3;
     }
     p {
-      margin-bottom:0.8em;
-      line-height:1.5;
-      font-size:0.9rem;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #333;
     }
 
-    /* Clean App Demo Section */
+    .btn {
+      display: inline-block;
+      padding: 1em 2.5em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 0.8em;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #000 0%, #333 100%);
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin: 1.2em 0 2em 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    .btn:active {
+      transform: translateY(0) scale(1.02);
+    }
+
+    /* Enhanced App Demo Section */
     .app-demo {
-      margin: 1em 0;
-      padding: 1em 0.8em;
+      margin: 0 0 1.5em 0;
+      padding: 2em 1em;
     }
     
     .phone-mockup {
       position: relative;
-      max-width: 160px;
+      max-width: 240px;
       margin: 0 auto;
-      background: #000;
-      border-radius: 1.8em;
-      padding: 0.3em;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      background: linear-gradient(145deg, #000, #222);
+      border-radius: 2.5em;
+      padding: 0.5em;
+      box-shadow: 
+        0 12px 35px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(255,255,255,0.1);
+      transform: perspective(1200px) rotateY(-8deg) rotateX(8deg);
+      transition: transform 0.4s ease;
+    }
+    
+    .phone-mockup:hover {
+      transform: perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.05);
     }
     
     .phone-screen {
       width: 100%;
       height: auto;
-      border-radius: 1.5em;
+      border-radius: 2em;
       display: block;
-    }
-
-    .btn {
-      display:inline-block;
-      padding:0.75em 1.5em;
-      font-size:1rem;
-      font-weight:600;
-      text-decoration:none;
-      border-radius:0.6em;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15);
-      background:#000;
-      color:#fff;
-      transition:transform 0.2s, background 0.2s;
-      margin-top: 0.6em;
-    }
-    .btn:hover {
-      background:#222;
-      transform:scale(1.03);
-    }
-    .btn:active {
-      transform:scale(0.97);
     }
 
     /* Mobile Responsiveness */
     @media (max-width: 480px) {
+      body {
+        padding: 1em 0;
+      }
       .container { 
         max-width: 95%; 
-        padding: 0.6em; 
+        padding: 1.5em 1em; 
       }
       .phone-mockup { 
-        max-width: 140px; 
+        max-width: 200px;
+        transform: perspective(900px) rotateY(-5deg) rotateX(5deg);
       }
       .app-demo {
-        margin: 0.8em 0;
-        padding: 0.8em 0.6em;
+        margin: 0 0 1.2em 0;
+        padding: 1.5em 0.8em;
       }
       h1 { 
-        font-size: 1.3rem;
-        margin-bottom: 0.3em;
+        font-size: 1.4rem;
+        margin-bottom: 0.8em;
       }
       p { 
-        font-size: 0.85rem;
-        margin-bottom: 0.6em;
+        font-size: 0.9rem;
+        margin-bottom: 1.2em;
       }
       img.banner {
-        margin-bottom: 0.6em;
+        margin-bottom: 1.2em;
+        width: 90%;
+      }
+      .btn {
+        margin: 1em 0 1.5em 0;
+        padding: 0.9em 2em;
+        font-size: 1rem;
+      }
+      .social-row img {
+        width: 26px;
+        height: 26px;
       }
     }
 
     /* Ensure everything fits in viewport */
     @media (max-height: 800px) {
-      .container { padding: 0.5em; }
-      h1 { font-size: 1.2rem; margin-bottom: 0.3em; }
-      p { font-size: 0.8rem; margin-bottom: 0.5em; }
-      .phone-mockup { max-width: 120px; }
-      .app-demo { margin: 0.6em 0; padding: 0.6em; }
-      img.banner { margin-bottom: 0.4em; }
+      body {
+        padding: 1em 0;
+      }
+      .container { padding: 1.2em 1em; }
+      h1 { font-size: 1.4rem; margin-bottom: 0.8em; }
+      p { font-size: 0.9rem; margin-bottom: 1.2em; }
+      .phone-mockup { 
+        max-width: 200px; 
+        transform: perspective(800px) rotateY(-5deg) rotateX(5deg);
+      }
+      .app-demo { 
+        margin: 0 0 1.2em 0; 
+        padding: 1.5em 0.8em; 
+      }
+      img.banner { margin-bottom: 1em; }
+      .btn {
+        margin: 1em 0 1.5em 0;
+        padding: 0.85em 2.2em;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-height: 700px) {
+      body {
+        padding: 0.5em 0;
+      }
+      .container { padding: 1em 0.8em; }
+      .phone-mockup { 
+        max-width: 180px; 
+      }
+      .app-demo {
+        padding: 1.2em 0.6em;
+      }
+      h1 { font-size: 1.3rem; }
+      p { margin-bottom: 1em; }
+      .btn {
+        margin: 0.8em 0 1.2em 0;
+        padding: 0.8em 2em;
+      }
+    }
+
+    @media (max-height: 600px) {
+      body {
+        padding: 0.5em 0;
+      }
+      .container { padding: 0.8em; }
+      .phone-mockup { 
+        max-width: 160px; 
+      }
+      .app-demo {
+        padding: 1em 0.5em;
+      }
+      h1 { font-size: 1.2rem; margin-bottom: 0.6em; }
+      p { font-size: 0.85rem; margin-bottom: 0.8em; }
+      img.banner { margin-bottom: 0.8em; }
+      .btn {
+        margin: 0.6em 0 1em 0;
+        padding: 0.75em 1.8em;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -163,18 +265,17 @@
           </a>
         </div>
   
-      <h1>Get Early Access to SmartCal!</h1>
-      <p>I'm building SmartCal – an iPhone app that <strong>instantly and accurately counts calories and macros</strong> using just your camera. No more manual calorie tracking or guessing nutrition!</p>
+        <h1>Instant, Effortless Calorie Tracking</h1>
+        <p>I'm building SmartCal – the first truly effortless calorie counting app with <strong>99% accuracy</strong>. Simply point your camera at any food and get instant, precise nutrition data. No manual logging, no food databases, no guesswork. Just revolutionary accuracy with <strong>zero effort</strong>.</p>
 
-      <!-- Clean App Demo Section -->
+        <a href="https://buy.stripe.com/4gMeVd4xO1iSgrebRYgIo01" class="btn">Reserve Early Access for $1</a>
+
+      <!-- Enhanced App Demo Section -->
       <div class="app-demo">
         <div class="phone-mockup">
           <img src="smartcal-demo.webp" alt="SmartCal App Demo" class="phone-screen">
         </div>
       </div>
-
-      <p><strong>Launch price will be $9.99.</strong> Secure your spot on the early access list below for $1 (goes toward your $9.99 purchase). You'll get to try SmartCal 2–3 weeks before public launch and help shape what features we build!</p>
-      <a href="https://buy.stripe.com/4gMeVd4xO1iSgrebRYgIo01" class="btn">Reserve for $1</a>
     </div>
     
     <script>
