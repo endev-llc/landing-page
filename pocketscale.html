@@ -12,15 +12,12 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-L7BXWB9545');
-    
-    // Custom source tracking
+
     const source = new URLSearchParams(window.location.search).get('source') || 
                    localStorage.getItem('traffic_source') || 'direct';
     const page = window.location.pathname.includes('pocketscale') ? 'pocketscale' : 'caloriescan';
-    
-    // Send custom event with source and page info
+
     gtag('event', 'page_view_with_source', {
       'source': source,
       'page_type': page
@@ -81,7 +78,7 @@
     }
 
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin-bottom: 1em;
       font-weight: 600;
       line-height: 1.3;
@@ -93,10 +90,56 @@
       color: #333;
     }
 
+    .info-block {
+      background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 100%);
+      padding: 1em 1.2em;
+      border-radius: 0.8em;
+      margin: 0.8em 0;
+      border-left: 4px solid #2196f3;
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .info-header {
+      font-weight: 600;
+      margin-bottom: 0.4em;
+      display: block;
+    }
+
+    .social-proof {
+      text-align: center;
+      margin: 0.8em 0 1.2em 0;
+      padding: 0;
+    }
+    
+    .proof-text {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .trust-indicators {
+      text-align: center;
+      margin: 0.6em 0 0 0;
+    }
+    
+    .security-badge, .guarantee {
+      font-size: 0.75rem;
+      color: #666;
+      margin: 0.2em 0;
+      line-height: 1.3;
+    }
+    
+    .security-badge {
+      font-weight: 500;
+    }
+
     .btn {
       display: inline-block;
-      padding: 1em 2.5em;
-      font-size: 1.1rem;
+      padding: 0.9em 2.2em;
+      font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
       border-radius: 0.8em;
@@ -104,7 +147,7 @@
       background: linear-gradient(135deg, #000 0%, #333 100%);
       color: #fff;
       transition: transform 0.2s, box-shadow 0.2s;
-      margin: 1.2em 0 2em 0;
+      margin: 0.8em 0 1em 0;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -116,15 +159,14 @@
       transform: translateY(0) scale(1.02);
     }
 
-    /* Enhanced App Demo Section */
     .app-demo {
-      margin: 0 0 1.5em 0;
+      margin: 0 0 1.2em 0;
       padding: 2em 1em;
     }
     
     .phone-mockup {
       position: relative;
-      max-width: 240px;
+      max-width: 200px;
       margin: 0 auto;
       background: linear-gradient(145deg, #000, #222);
       border-radius: 2.5em;
@@ -132,12 +174,6 @@
       box-shadow: 
         0 12px 35px rgba(0,0,0,0.3),
         0 0 0 1px rgba(255,255,255,0.1);
-      transform: perspective(1200px) rotateY(-8deg) rotateX(8deg);
-      transition: transform 0.4s ease;
-    }
-    
-    .phone-mockup:hover {
-      transform: perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.05);
     }
     
     .phone-screen {
@@ -146,151 +182,60 @@
       border-radius: 2em;
       display: block;
     }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 480px) {
-      body {
-        padding: 1em 0;
-      }
-      .container { 
-        max-width: 95%; 
-        padding: 1.5em 1em; 
-      }
-      .phone-mockup { 
-        max-width: 200px;
-        transform: perspective(900px) rotateY(-5deg) rotateX(5deg);
-      }
-      .app-demo {
-        margin: 0 0 1.2em 0;
-        padding: 1.5em 0.8em;
-      }
-      h1 { 
-        font-size: 1.4rem;
-        margin-bottom: 0.8em;
-      }
-      p { 
-        font-size: 0.9rem;
-        margin-bottom: 1.2em;
-      }
-      img.banner {
-        margin-bottom: 1.2em;
-        width: 90%;
-      }
-      .btn {
-        margin: 1em 0 1.5em 0;
-        padding: 0.9em 2em;
-        font-size: 1rem;
-      }
-      .social-row img {
-        width: 26px;
-        height: 26px;
-      }
-    }
-
-    /* Ensure everything fits in viewport */
-    @media (max-height: 800px) {
-      body {
-        padding: 1em 0;
-      }
-      .container { padding: 1.2em 1em; }
-      h1 { font-size: 1.4rem; margin-bottom: 0.8em; }
-      p { font-size: 0.9rem; margin-bottom: 1.2em; }
-      .phone-mockup { 
-        max-width: 200px; 
-        transform: perspective(800px) rotateY(-5deg) rotateX(5deg);
-      }
-      .app-demo { 
-        margin: 0 0 1.2em 0; 
-        padding: 1.5em 0.8em; 
-      }
-      img.banner { margin-bottom: 1em; }
-      .btn {
-        margin: 1em 0 1.5em 0;
-        padding: 0.85em 2.2em;
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-height: 700px) {
-      body {
-        padding: 0.5em 0;
-      }
-      .container { padding: 1em 0.8em; }
-      .phone-mockup { 
-        max-width: 180px; 
-      }
-      .app-demo {
-        padding: 1.2em 0.6em;
-      }
-      h1 { font-size: 1.3rem; }
-      p { margin-bottom: 1em; }
-      .btn {
-        margin: 0.8em 0 1.2em 0;
-        padding: 0.8em 2em;
-      }
-    }
-
-    @media (max-height: 600px) {
-      body {
-        padding: 0.5em 0;
-      }
-      .container { padding: 0.8em; }
-      .phone-mockup { 
-        max-width: 160px; 
-      }
-      .app-demo {
-        padding: 1em 0.5em;
-      }
-      h1 { font-size: 1.2rem; margin-bottom: 0.6em; }
-      p { font-size: 0.85rem; margin-bottom: 0.8em; }
-      img.banner { margin-bottom: 0.8em; }
-      .btn {
-        margin: 0.6em 0 1em 0;
-        padding: 0.75em 1.8em;
-        font-size: 0.95rem;
-      }
-    }
   </style>
 </head>
 <body>
-    <div class="container">
-      <img src="jakecalbanner.webp" alt="PocketScale Banner" class="banner">
-  
-      <div class="social-row">
-          <a href="https://tiktok.com/@jakecalorie" target="_blank">
-            <img src="tiktokicon.webp" alt="TikTok">
-          </a>
-          <a href="https://instagram.com/jakecalorie" target="_blank">
-            <img src="instagramicon.webp" alt="Instagram">
-          </a>
-        </div>
-  
-        <h1>Get Early Access to PocketScale!</h1>
-        <p>Hey everyone! I'm building PocketScale – an iPhone app that <strong>instantly and accurately weighs your food</strong> using just your camera. No more carrying kitchen scales or guessing portions!</p>
+  <div class="container">
+    <img src="jakecalbanner.webp" alt="PocketScale Banner" class="banner">
 
-        <a href="https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00" class="btn">Reserve Early Access for $1</a>
+    <div class="social-row">
+      <a href="https://tiktok.com/@jakecalorie" target="_blank">
+        <img src="tiktokicon.webp" alt="TikTok">
+      </a>
+      <a href="https://instagram.com/jakecalorie" target="_blank">
+        <img src="instagramicon.webp" alt="Instagram">
+      </a>
+    </div>
 
-      <!-- Enhanced App Demo Section -->
-      <div class="app-demo">
-        <div class="phone-mockup">
-          <img src="pocketscale-demo.webp" alt="PocketScale App Demo" class="phone-screen">
-        </div>
+    <h1>Get Early Access to PocketScale!</h1>
+    <p>Hey everyone! I'm building PocketScale – an iPhone app that <strong>instantly and accurately measures the weight of your food</strong> using your iPhone's built-in LiDAR sensor. No more carrying kitchen scales or guessing portions!</p>
+    
+    <div class="app-demo">
+      <div class="phone-mockup">
+        <img src="pocketscale-demo.webp" alt="PocketScale App Demo" class="phone-screen">
       </div>
     </div>
-    
-    <script>
+
+    <div class="info-block">
+      <span class="info-header">What you get with Early Access:</span>
+      <div class="benefit">✅ Use PocketScale 4 weeks before public launch</div>
+      <div class="benefit">✅ $1 credit applied to your first month</div>
+      <div class="benefit">✅ Help shape the features we build</div>
+    </div>
+
+    <div class="social-proof">
+      <span class="proof-text">🔥 <strong>284</strong> people already reserved</span>
+    </div>
+
+    <a href="https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00" class="btn">Get Early Access for $1</a>
+
+    <div class="trust-indicators">
+      <div class="security-badge">🔒 Secured by Stripe</div>
+      <div class="guarantee">30-day money back guarantee</div>
+    </div>
+  </div>
+  
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const source = new URLSearchParams(window.location.search).get('source') || 
                      localStorage.getItem('traffic_source') || 'direct';
       const page = 'pocketscale';
       const reserveBtn = document.querySelector('.btn');
-      
-      // Update Stripe URL with success redirect
+
       const baseStripeUrl = 'https://buy.stripe.com/fZubJ15BSgdMgre09ggIo00';
       const successUrl = `https://landing-page-896086041670.us-central1.run.app/successfulpayment.html?source=${source}&product=${page}`;
       reserveBtn.href = `${baseStripeUrl}?success_url=${encodeURIComponent(successUrl)}`;
-      
-      // Track button click
+
       reserveBtn.addEventListener('click', function() {
         gtag('event', 'reserve_click', {
           'source': source,
@@ -299,6 +244,6 @@
         });
       });
     });
-    </script>
+  </script>
 </body>
 </html>
