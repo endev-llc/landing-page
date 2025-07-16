@@ -6,7 +6,6 @@
   <title>PocketScale Early Access</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
-  <!-- Google tag (gtag.js) with source tracking -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7BXWB9545"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -198,7 +197,18 @@
     
     <div class="app-demo">
       <div class="phone-mockup">
-        <img src="pocketscale-demo.webp" alt="PocketScale App Demo" class="phone-screen">
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          poster="pocketscale-demo.webp"
+          class="phone-screen"
+        >
+          <source src="pocketscale-vid.webm" type="video/webm">
+          <source src="pocketscale-vid.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
 
