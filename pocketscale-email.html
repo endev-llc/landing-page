@@ -271,7 +271,7 @@
         required
         id="emailInput"
       >
-      <button class="btn" id="joinWaitlistBtn">Send Me The Link!</button>
+      <button class="btn" id="joinWaitlistBtn">Get Notified</button>
     </div>
 
     <div class="success-message" id="successMessage">
@@ -306,19 +306,10 @@
         joinBtn.disabled = true;
 
         try {
-          // Send to Google Apps Script
-          const response = await fetch('https://script.google.com/macros/s/AKfycbz0bjFQatSyh0sB1YVnRkk1iTtz-ieZ3FuwCnfShuKGprWYSKHoDFUHZ-CC9yMkmHE-/exec', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: email,
-              source: source,
-              timestamp: new Date().toISOString()
-            })
-          });
-
+          // Simple GET request with URL parameters - most reliable for Google Apps Script
+          const url = `https://script.google.com/macros/s/AKfycbwXYnP2wkaA6gPYrPE1tHjQrNXpq3N1jzFPztegtg63pfvK-38589dl62u-NbeuNUJC/exec?email=${encodeURIComponent(email)}&source=${encodeURIComponent(source)}`;
+          
+          const response = await fetch(url);
           const result = await response.json();
 
           if (result.success) {
@@ -334,7 +325,7 @@
             emailInput.style.display = 'none';
             joinBtn.style.display = 'none';
           } else {
-            throw new Error('Failed to process signup');
+            throw new Error(result.error || 'Failed to process signup');
           }
         } catch (error) {
           console.error('Error:', error);
