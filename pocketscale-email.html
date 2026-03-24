@@ -43,6 +43,29 @@
       padding: 2em 1.2em; 
       text-align: center; 
     }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8em;
+      margin-bottom: 1.2em;
+    }
+
+    .pfp {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .social-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     img.banner { 
       width: 85%; 
       height: auto; 
@@ -73,11 +96,10 @@
     .social-handle {
       font-size: 0.9rem;
       color: #555;
-      margin-bottom: 1.2em;
     }
 
     h1 {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       margin-bottom: 0.5em;
       font-weight: 600;
       line-height: 1.3;
@@ -250,22 +272,27 @@
 </head>
 <body>
   <div class="container">
-    <img src="jakecalbanner.webp" alt="PocketScale Banner" class="banner">
 
-    <div class="social-row">
-      <a href="https://tiktok.com/@jakecalorie" target="_blank">
-        <img src="tiktokicon.webp" alt="TikTok">
-      </a>
-      <a href="https://instagram.com/jakecalorie" target="_blank">
-        <img src="instagramicon.webp" alt="Instagram">
-      </a>
+    <div class="profile-header">
+      <img src="pfpnew.png" alt="Profile" class="pfp">
+      <div class="social-col">
+        <div class="social-row">
+          <a href="https://tiktok.com/@jakecalorie" target="_blank">
+            <img src="tiktokicon.webp" alt="TikTok">
+          </a>
+          <a href="https://instagram.com/jakecalorie" target="_blank">
+            <img src="instagramicon.webp" alt="Instagram">
+          </a>
+        </div>
+        <div class="social-handle">@jakecalorie</div>
+      </div>
     </div>
 
-    <div class="social-handle">@jakecalorie</div>
+    <img src="ps-app-store.jpg" alt="PocketScale on the App Store" style="width:80%; height:auto; border-radius:0.8em;">
 
     <h1>Download PocketScale in the App Store!</h1>
-    <img src="ps-app-store.jpg" alt="PocketScale on the App Store" style="width:80%; height:auto; border-radius:0.8em;">
-    <p>Hey everyone! PocketScale is an iPhone app that lets you <strong>scan any food</strong> for instant calorie and macro counts, and then <strong>track</strong> that food with the tap of a button. Try it out and let me know what you think!</p>
+    
+    <p>Hey everyone! I'm sure we all can agree that calorie counting sucks. It's tedious, stressful, and time-consuming. PocketScale is my attempt at making this process as <strong>easy and effortless</strong> as possible so you can focus on what actually matters - achieving your <strong>dream physique</strong> and maximizing your <strong>health and well-being.</strong> Try it out for a few days and let me know what you think!</p>
     
     <div class="app-demo">
       <div class="phone-mockup">
