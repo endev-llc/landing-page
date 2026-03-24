@@ -46,7 +46,7 @@
     img.banner { 
       width: 85%; 
       height: auto; 
-      margin-bottom: 1.5em; 
+      margin-bottom: 0.4em; 
       border-radius: 0.8em; 
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
@@ -55,8 +55,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1em;
-      margin-bottom: 1em;
+      gap: 0.6em;
+      margin-bottom: 0.15em;
     }
     .social-row img {
       width: 28px;
@@ -77,8 +77,8 @@
     }
 
     h1 {
-      font-size: 1.3rem;
-      margin-bottom: 1em;
+      font-size: 1.7rem;
+      margin-bottom: 0.5em;
       font-weight: 600;
       line-height: 1.3;
     }
@@ -261,8 +261,11 @@
       </a>
     </div>
 
-    <h1>Download PocketScale Below!</h1>
-    <p>Hey everyone! I'm building PocketScale – an iPhone app that <strong>instantly and accurately weighs your food</strong> using just your camera. No more carrying kitchen scales or guessing portions!</p>
+    <div class="social-handle">@jakecalorie</div>
+
+    <h1>Download PocketScale in the App Store!</h1>
+    <img src="ps-app-store.jpg" alt="PocketScale on the App Store" style="width:80%; height:auto; border-radius:0.8em;">
+    <p>Hey everyone! PocketScale is an iPhone app that lets you <strong>scan any food</strong> for instant calorie and macro counts, and then <strong>track</strong> that food with the tap of a button. Try it out and let me know what you think!</p>
     
     <div class="app-demo">
       <div class="phone-mockup">
@@ -274,33 +277,11 @@
           poster="pocketscale-demo.webp"
           class="phone-screen"
         >
-          <source src="pocketscale-vid.webm" type="video/webm">
-          <source src="pocketscale-vid.mp4" type="video/mp4">
+          <source src="v0.2-demo.webm" type="video/webm">
+          <source src="v0.2-demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-    </div>
-
-    <div class="email-form">
-      <input 
-        type="email" 
-        class="email-input" 
-        placeholder="Enter your email address"
-        required
-        id="emailInput"
-      >
-      <button class="btn" id="joinWaitlistBtn">
-        <div class="spinner" id="loadingSpinner"></div>
-        <span id="buttonText">Send Me The Link!</span>
-      </button>
-    </div>
-
-    <div class="success-message" id="successMessage">
-      🎉 Check your email! Your download link is on the way.
-    </div>
-
-    <div class="trust-indicators">
-      <div class="privacy-note">We'll only email you about PocketScale. No spam, ever.</div>
     </div>
   </div>
   
