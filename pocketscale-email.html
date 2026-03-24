@@ -2,379 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PocketScale Download</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>PocketScale – Download</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7BXWB9545"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-L7BXWB9545');
-
-    const source = new URLSearchParams(window.location.search).get('source') || 
-                   localStorage.getItem('traffic_source') || 'direct';
-    const page = window.location.pathname.includes('pocketscale') ? 'pocketscale' : 'caloriescan';
-
-    gtag('event', 'page_view_with_source', {
-      'source': source,
-      'page_type': page
-    });
+    var source = new URLSearchParams(window.location.search).get('source') || 'direct';
+    gtag('event', 'page_view_with_source', { source: source, page_type: 'pocketscale' });
   </script>
-  
+
   <style>
-    html, body { 
-      margin: 0; 
-      padding: 0; 
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      min-height: 100vh;
-    }
-    body { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      font-family: system-ui, sans-serif; 
-      color: #000;
-      padding: 2em 0;
-    }
-    .container { 
-      max-width: 420px; 
-      padding: 2em 1.2em; 
-      text-align: center; 
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .profile-header {
+    body {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8em;
-      margin-bottom: 1.2em;
     }
 
-    .pfp {
-      width: 56px;
-      height: 56px;
+    .page {
+      width: 100%;
+      max-width: 420px;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.3em;
+      text-align: center;
+      padding: 1.2em;
+      position: relative;
+    }
+
+    /* --- Tap-here arrow top-right --- */
+    .tap-arrow {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .tap-arrow svg {
+      width: 44px;
+      height: 44px;
+      filter: drop-shadow(0 2px 6px rgba(0,120,255,0.3));
+    }
+    .tap-arrow span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #007aff;
+      white-space: nowrap;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: translateY(0); }
+      50% { opacity: 0.6; transform: translateY(-4px); }
+    }
+
+    /* --- Creator --- */
+    .creator {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 0.88rem;
+      color: #888;
+    }
+    .creator img {
+      width: 30px; height: 30px;
       border-radius: 50%;
       object-fit: cover;
-      flex-shrink: 0;
     }
 
-    .social-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* --- App icon --- */
+    .app-icon {
+      width: 115px; height: 115px;
+      border-radius: 22%;
+      object-fit: cover;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
     }
 
-    img.banner { 
-      width: 85%; 
-      height: auto; 
-      margin-bottom: 0.4em; 
-      border-radius: 0.8em; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    /* --- Tagline --- */
+    .tagline {
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .tagline .highlight {
+      color: #007aff;
     }
 
-    .social-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.6em;
-      margin-bottom: 0.15em;
-    }
-    .social-row img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      opacity: 0.85;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    .social-row img:hover {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-
-    .social-handle {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5em;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-    p {
-      margin-bottom: 1.5em;
-      line-height: 1.6;
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .info-block {
-      background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 100%);
-      padding: 1em 1.2em;
-      border-radius: 0.8em;
-      margin: 0.8em 0;
-      border-left: 4px solid #2196f3;
-      font-size: 0.9rem;
-      color: #444;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .info-header {
-      font-weight: 600;
-      margin-bottom: 0.4em;
-      display: block;
-    }
-
-    .social-proof {
-      text-align: center;
-      margin: 0.8em 0 1.2em 0;
-      padding: 0;
-    }
-    
-    .proof-text {
-      font-size: 0.8rem;
-      color: #666;
-      font-weight: 400;
-    }
-
-    .email-form {
-      margin: 1.5em 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8em;
-      align-items: center;
-    }
-
-    .email-input {
-      width: 100%;
-      max-width: 280px;
-      padding: 0.9em 1.2em;
-      font-size: 1rem;
-      border: 2px solid #e9ecef;
-      border-radius: 0.8em;
-      background: #fff;
-      color: #333;
-      font-family: system-ui, sans-serif;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      box-sizing: border-box;
-    }
-
-    .email-input:focus {
-      outline: none;
-      border-color: #2196f3;
-      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-    }
-
-    .email-input::placeholder {
-      color: #999;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5em;
-      padding: 0.9em 2.2em;
-      font-size: 1rem;
+    /* --- CTA --- */
+    .cta {
+      display: inline-block;
+      padding: 18px 75px;
+      font-size: 1.3rem;
       font-weight: 700;
-      text-decoration: none;
-      border: none;
-      border-radius: 0.8em;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      background: black;
       color: #fff;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      font-family: system-ui, sans-serif;
+      background: #000;
+      border: none;
+      border-radius: 16px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+      -webkit-tap-highlight-color: transparent;
     }
-    .btn:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-    }
-    .btn:active {
-      transform: translateY(0) scale(1.02);
-    }
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.3); }
+    .cta:active { transform: scale(0.97); }
 
-    .spinner {
-      width: 16px;
-      height: 16px;
-      border: 2px solid transparent;
-      border-top: 2px solid #fff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      display: none;
+    /* --- Instructions --- */
+    .instructions {
+      background: #fff;
+      border: 1px solid #e8e8ea;
+      border-radius: 14px;
+      padding: 0.9em 1.3em;
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.6;
+      width: 92%;
+      max-width: 340px;
     }
+    .instructions strong { color: #1d1d1f; }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .trust-indicators {
-      text-align: center;
-      margin: 0.6em 0 0 0;
-    }
-    
-    .privacy-note {
-      font-size: 0.75rem;
-      color: #666;
-      margin: 0.4em 0;
-      line-height: 1.3;
-      font-weight: 400;
-    }
-
-    .app-demo {
-      margin: 0 0 1.2em 0;
-    }
-    
-    .phone-mockup {
-      position: relative;
-      max-width: 200px;
-      margin: 0 auto;
-      background: linear-gradient(145deg, #000, #222);
-      border-radius: 2.5em;
-      padding: 0.5em;
-    }
-    
-    .phone-screen {
-      width: 100%;
-      height: auto;
-      border-radius: 2em;
-      display: block;
-    }
-
-    .success-message {
-      display: none;
-      padding: 1em;
-      background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
-      border: 2px solid #4caf50;
-      border-radius: 0.8em;
-      color: #2e7d32;
-      font-weight: 600;
-      margin: 1em 0;
-    }
-
-    .success-message.show {
-      display: block;
+    @media (max-height: 640px) {
+      .page { gap: 0.8em; }
+      .app-icon { width: 85px; height: 85px; }
+      .tagline { font-size: 1.5rem; }
+      .cta { padding: 0.9em 2.6em; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <div class="profile-header">
-      <img src="pfpnew.png" alt="Profile" class="pfp">
-      <div class="social-col">
-        <div class="social-row">
-          <a href="https://tiktok.com/@jakecalorie" target="_blank">
-            <img src="tiktokicon.webp" alt="TikTok">
-          </a>
-          <a href="https://instagram.com/jakecalorie" target="_blank">
-            <img src="instagramicon.webp" alt="Instagram">
-          </a>
-        </div>
-        <div class="social-handle">@jakecalorie</div>
-      </div>
+  <div class="page">
+
+    <div class="tap-arrow">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="40" height="40" rx="10" fill="#007aff"/>
+        <path d="M16 28L28 16M28 16H18M28 16v10" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Tap here</span>
     </div>
 
-    <img src="ps-app-store.jpg" alt="PocketScale on the App Store" style="width:80%; height:auto; border-radius:0.8em;">
-
-    <h1>Download PocketScale in the App Store!</h1>
-    
-    <p>Hey everyone! I'm sure we all can agree that calorie counting sucks. It's tedious, stressful, and time-consuming. PocketScale is my attempt at making this process as <strong>easy and effortless</strong> as possible so you can focus on what actually matters - achieving your <strong>dream physique</strong> and maximizing your <strong>health and well-being.</strong> Try it out for a few days and let me know what you think!</p>
-    
-    <div class="app-demo">
-      <div class="phone-mockup">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          poster="pocketscale-demo.webp"
-          class="phone-screen"
-        >
-          <source src="v0.2-demo.webm" type="video/webm">
-          <source src="v0.2-demo.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <div class="creator">
+      <img src="pfpnew.png" alt="Jake">
+      @jakecalorie
     </div>
+
+    <img src="pocketscale-logo.png" alt="PocketScale" class="app-icon">
+
+    <div class="tagline">
+      The Solution To<br><span class="highlight">Calorie Counting.</span>
+    </div>
+
+    <a class="cta" href="https://apps.apple.com/us/app/pocketscale-calorie-scanner/id6748204956" onclick="gtag('event','download_click',{source:source,page_type:'pocketscale'})">Download!</a>
+
+    <div class="instructions">
+      On TikTok, tap <strong>"···" </strong> at the top right<br>
+      Then tap <strong>"Open in browser"</strong><br>
+      Then tap <strong>"Download!"</strong> above
+    </div>
+
   </div>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const source = new URLSearchParams(window.location.search).get('source') || 
-                     localStorage.getItem('traffic_source') || 'direct';
-      const page = 'pocketscale';
-      const emailInput = document.getElementById('emailInput');
-      const joinBtn = document.getElementById('joinWaitlistBtn');
-      const successMessage = document.getElementById('successMessage');
-      const spinner = document.getElementById('loadingSpinner');
-      const buttonText = document.getElementById('buttonText');
 
-      joinBtn.addEventListener('click', async function(e) {
-        e.preventDefault();
-        
-        const email = emailInput.value.trim();
-        if (!email || !email.includes('@')) {
-          alert('Please enter a valid email address');
-          return;
-        }
-
-        // Disable button and show loading state
-        buttonText.textContent = 'Sending...';
-        spinner.style.display = 'block';
-        joinBtn.disabled = true;
-
-        try {
-          // Simple GET request with URL parameters - most reliable for Google Apps Script
-          const url = `https://script.google.com/macros/s/AKfycbwXYnP2wkaA6gPYrPE1tHjQrNXpq3N1jzFPztegtg63pfvK-38589dl62u-NbeuNUJC/exec?email=${encodeURIComponent(email)}&source=${encodeURIComponent(source)}`;
-          
-          const response = await fetch(url);
-          const result = await response.json();
-
-          if (result.success) {
-            // Track email signup
-            gtag('event', 'email_signup', {
-              'source': source,
-              'page_type': page,
-              'email': email
-            });
-
-            // Show success message
-            successMessage.classList.add('show');
-            emailInput.style.display = 'none';
-            joinBtn.style.display = 'none';
-          } else {
-            throw new Error(result.error || 'Failed to process signup');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          alert('Something went wrong. Please try again.');
-          buttonText.textContent = 'Send Me The Link!';
-          spinner.style.display = 'none';
-          joinBtn.disabled = false;
-        }
-      });
-
-      // Allow Enter key to submit
-      emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          joinBtn.click();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
